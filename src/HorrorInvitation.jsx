@@ -8,7 +8,7 @@ const HorrorInvitation = () => {
   const [state, handleSubmit] = useForm("xrbnobgj");
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsRevealed(true), 1500);
+    const timer = setTimeout(() => setIsRevealed(true), 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -227,17 +227,17 @@ const styles = {
     alignItems: 'center',
     zIndex: 100,
     background: '#0a0a0a',
-    transition: 'opacity 0.8s ease-out',
+    transition: 'opacity 1.2s ease-out',
   },
   batWrapper: {
-    transition: 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
-    width: '40vmin',
-    maxWidth: '300px',
+    transition: 'transform 1.8s cubic-bezier(0.4, 0, 0.2, 1)',
+    width: '60vmin',
+    maxWidth: '500px',
   },
   batImage: {
     width: '100%',
     height: 'auto',
-    maxHeight: '50vh',
+    maxHeight: '70vh',
     objectFit: 'contain',
     filter: 'drop-shadow(0 0 30px rgba(139, 0, 0, 0.6))',
   },
