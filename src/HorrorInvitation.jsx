@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import { eventConfig } from './config';
 
 const HorrorInvitation = () => {
   const [isRevealed, setIsRevealed] = useState(false);
@@ -11,18 +12,14 @@ const HorrorInvitation = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const films = [
-    { id: 'maxxxine', title: 'MaXXXine', year: '2024', director: 'Ti West' },
-    { id: 'sinister', title: 'Sinister', year: '2012', director: 'Scott Derrickson' },
-    { id: 'skinamarink', title: 'Skinamarink', year: '2022', director: 'Kyle Edward Ball' },
-  ];
+  const { films, date, heure, lieu } = eventConfig;
 
   return (
     <div style={styles.container}>
       {/* Atmospheric background elements */}
       <div style={styles.fogOverlay}></div>
       <div style={styles.noiseOverlay}></div>
-      
+
       {/* Bats Animation Container */}
       <div style={{
         ...styles.batsContainer,
@@ -34,8 +31,8 @@ const HorrorInvitation = () => {
           ...styles.batWrapper,
           transform: isRevealed ? 'translateX(-100vw) rotate(-20deg)' : 'translateX(0)',
         }}>
-          <img 
-            src="/bat-left.png" 
+          <img
+            src="/bat-left.png"
             alt="Chauve-souris gauche"
             style={styles.batImage}
           />
@@ -46,8 +43,8 @@ const HorrorInvitation = () => {
           ...styles.batWrapper,
           transform: isRevealed ? 'translateX(100vw) rotate(20deg)' : 'translateX(0)',
         }}>
-          <img 
-            src="/bat-right.png" 
+          <img
+            src="/bat-right.png"
             alt="Chauve-souris droite"
             style={styles.batImage}
           />
@@ -61,23 +58,23 @@ const HorrorInvitation = () => {
         transform: isRevealed ? 'scale(1)' : 'scale(0.9)',
       }}>
         <div style={styles.ornamentTop}>❧</div>
-        
+
         <h1 style={styles.title}>Ciné-Club de l'Horreur</h1>
-        
+
         <div style={styles.subtitle}>Vous êtes cordialement conviés à une soirée d'épouvante</div>
 
         <div style={styles.details}>
           <div style={styles.detailItem}>
             <span style={styles.detailLabel}>Date</span>
-            <span style={styles.detailValue}>Dimanche 21 Décembre</span>
+            <span style={styles.detailValue}>{date}</span>
           </div>
           <div style={styles.detailItem}>
             <span style={styles.detailLabel}>Heure</span>
-            <span style={styles.detailValue}>20h30</span>
+            <span style={styles.detailValue}>{heure}</span>
           </div>
           <div style={styles.detailItem}>
             <span style={styles.detailLabel}>Lieu</span>
-            <span style={styles.detailValue}>134 Cours Lieutaud</span>
+            <span style={styles.detailValue}>{lieu}</span>
           </div>
         </div>
 
@@ -114,7 +111,7 @@ const HorrorInvitation = () => {
         {!state.succeeded ? (
           <form onSubmit={handleSubmit} style={styles.form}>
             <h2 style={styles.sectionTitle}>Confirmez Votre Présence</h2>
-            
+
             <div style={styles.formGroup}>
               <label style={styles.label} htmlFor="name">Votre Nom</label>
               <input
@@ -166,11 +163,11 @@ const HorrorInvitation = () => {
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-        
+
         * {
           box-sizing: border-box;
         }
-        
+
         body {
           margin: 0;
           padding: 0;
