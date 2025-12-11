@@ -8,7 +8,7 @@ const HorrorInvitation = () => {
   const [state, handleSubmit] = useForm("xrbnobgj");
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsRevealed(true), 3500);
+    const timer = setTimeout(() => setIsRevealed(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -26,11 +26,11 @@ const HorrorInvitation = () => {
         opacity: isRevealed ? 0 : 1,
         pointerEvents: isRevealed ? 'none' : 'auto',
       }}>
-        {/* Left Bat - Replace src with your image */}
-        <div style={{
-          ...styles.batWrapper,
-          transform: isRevealed ? 'translateX(-100vw) rotate(-20deg)' : 'translateX(0)',
-        }}>
+        {/* Left Bat */}
+        <div
+          className={isRevealed ? 'bat-fly-left' : ''}
+          style={styles.batWrapper}
+        >
           <img
             src="/bat-left.png"
             alt="Chauve-souris gauche"
@@ -38,11 +38,11 @@ const HorrorInvitation = () => {
           />
         </div>
 
-        {/* Right Bat - Replace src with your image */}
-        <div style={{
-          ...styles.batWrapper,
-          transform: isRevealed ? 'translateX(100vw) rotate(20deg)' : 'translateX(0)',
-        }}>
+        {/* Right Bat */}
+        <div
+          className={isRevealed ? 'bat-fly-right' : ''}
+          style={styles.batWrapper}
+        >
           <img
             src="/bat-right.png"
             alt="Chauve-souris droite"
@@ -183,6 +183,56 @@ const HorrorInvitation = () => {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
+
+        @keyframes flyLeftSwirl {
+          0% {
+            transform: translateX(0) translateY(0) rotate(0deg);
+          }
+          20% {
+            transform: translateX(-15vw) translateY(-20vh) rotate(-45deg);
+          }
+          40% {
+            transform: translateX(-35vw) translateY(10vh) rotate(-120deg);
+          }
+          60% {
+            transform: translateX(-55vw) translateY(-15vh) rotate(-200deg);
+          }
+          80% {
+            transform: translateX(-80vw) translateY(5vh) rotate(-300deg);
+          }
+          100% {
+            transform: translateX(-120vw) translateY(-10vh) rotate(-360deg);
+          }
+        }
+
+        @keyframes flyRightSwirl {
+          0% {
+            transform: translateX(0) translateY(0) rotate(0deg);
+          }
+          20% {
+            transform: translateX(15vw) translateY(-20vh) rotate(45deg);
+          }
+          40% {
+            transform: translateX(35vw) translateY(10vh) rotate(120deg);
+          }
+          60% {
+            transform: translateX(55vw) translateY(-15vh) rotate(200deg);
+          }
+          80% {
+            transform: translateX(80vw) translateY(5vh) rotate(300deg);
+          }
+          100% {
+            transform: translateX(120vw) translateY(-10vh) rotate(360deg);
+          }
+        }
+
+        .bat-fly-left {
+          animation: flyLeftSwirl 2s ease-in-out forwards;
+        }
+
+        .bat-fly-right {
+          animation: flyRightSwirl 2s ease-in-out forwards;
+        }
       `}</style>
     </div>
   );
@@ -227,17 +277,16 @@ const styles = {
     alignItems: 'center',
     zIndex: 100,
     background: '#0a0a0a',
-    transition: 'opacity 1.2s ease-out',
+    transition: 'opacity 1.5s ease-out 0.5s',
   },
   batWrapper: {
-    transition: 'transform 1.8s cubic-bezier(0.4, 0, 0.2, 1)',
-    width: '60vmin',
-    maxWidth: '500px',
+    width: '80vmin',
+    maxWidth: '800px',
   },
   batImage: {
     width: '100%',
     height: 'auto',
-    maxHeight: '70vh',
+    maxHeight: '80vh',
     objectFit: 'contain',
     filter: 'drop-shadow(0 0 30px rgba(139, 0, 0, 0.6))',
   },
