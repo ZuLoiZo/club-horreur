@@ -5,16 +5,16 @@
 
 export const eventConfig = {
   // Date et heure
-  date: "Dimanche 21 Décembre",
-  heure: "20h30",
+  date: "Dimanche 31 Janvier",
+  heure: "20h45",
 
   // Lieu
   lieu: "134 Cours Lieutaud",
 
   // Films au choix (3 maximum recommandé)
   films: [
-    { id: 'maxxxine', title: 'MaXXXine', year: '2024', director: 'Ti West' },
+    { id: 'Oddity', title: 'Oddity', year: '2024', director: 'Damian McCarthy' },
     { id: 'sinister', title: 'Sinister', year: '2012', director: 'Scott Derrickson' },
-    { id: 'skinamarink', title: 'Skinamarink', year: '2022', director: 'Kyle Edward Ball' },
+    { id: 'The innocent', title: 'The Innocent', year: '2022', director: 'Eskil Vogt' },
   ],
 };
